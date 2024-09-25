@@ -10,7 +10,7 @@
 #'   \item{coeficientes}{os valores estimados dos coeficientes do modelo.}
 #'   \item{dados}{os dados utilizados para se criar o modelo.}
 #'   \item{residuos}{os resíduos; ou seja, o valor da resposta menos o valor ajustado}
-#'   \item{ajustado}{os valores de ajuste do modelo; ou seja, os valores de \code{x} aplicados à função de regressão.}
+#'   \item{ajustados}{os valores de ajuste do modelo; ou seja, os valores de \code{x} aplicados à função de regressão.}
 #' }
 #'
 #' FALTA EXEMPLO
@@ -47,7 +47,7 @@ reg_linear <- function(x, y){
 
   result <- list(coeficientes = betas,
                  residuos = e,
-                 ajustado = y_hat,
+                 ajustados = y_hat,
                  dados = data.frame(y, x)
   )
 

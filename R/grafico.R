@@ -5,7 +5,7 @@ grafico <- function(modelo, tipo) {
   # residuos vs ordem (rvo)
   # ...
   if(tipo == "pvo") {
-    result <- plot(modelo$dados[, 1], modelo$fitted)
+    result <- plot(modelo$dados[, 1], modelo$ajustados)
   }
   else if(tipo == "rvo") {
     result <- plot(modelo$residuos)
