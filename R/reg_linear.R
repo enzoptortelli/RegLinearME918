@@ -45,6 +45,8 @@ reg_linear <- function(x, y){
   # Cálculo dos resíduos (e):
   e <- y - y_hat
 
+  rownames(betas)[1] <- 'Intercepto'
+
   result <- list(coeficientes = betas,
                  residuos = e,
                  ajustados = y_hat,
