@@ -14,8 +14,9 @@
 #' }
 #'
 #' @examples
+#' reg_linear(meu_dataset[,2:4], meu_dataset[,1])
 #' reg_linear(iris[,1], iris[,2])
-#' reg_linear(iris[,1:3], iris[,4])
+#' 
 #' 
 #' 
 #'
