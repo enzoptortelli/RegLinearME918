@@ -57,7 +57,7 @@ grafico <- function(modelo, tipo) {
   }
   # Qualquer outro tipo
   else {
-    stop("Erro: tipo de gráfico inválido. Use 'pvo' para preditos vs observados ou 'rvo' para resíduos vs ordem de coleta.")
+    stop("Erro: tipo de gráfico inválido. Use 'rvp' para resíduos vs preditoras, 'rva' para resíduos vs ajustados, ou 'normres' para normalidade dos resíduos.")
   }
   
 }
