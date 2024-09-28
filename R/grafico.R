@@ -20,6 +20,7 @@
 #' grafico(modelo, "normres")  # Gráfico Q-Q de Normalidade dos Resíduos
 #'
 #'
+#'
 #' @export
 grafico <- function(modelo, tipo) {
   # verificar se a classe do modelo inserido pelo usuário é "modelo_linear":
@@ -60,6 +61,4 @@ grafico <- function(modelo, tipo) {
   }
   
 }
-
-
 
