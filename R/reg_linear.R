@@ -13,8 +13,11 @@
 #'   \item{ajustados}{os valores de ajuste do modelo; ou seja, os valores de \code{x} aplicados à função de regressão.}
 #' }
 #'
-#' FALTA EXEMPLO
-#'
+#' @examples
+#' reg_linear(iris[,1], iris[,2])
+#' reg_linear(iris[,1:3], iris[,4])
+#' 
+#' 
 #'
 #' @export
 reg_linear <- function(x, y){
@@ -58,3 +61,7 @@ reg_linear <- function(x, y){
 
   return(result)
 }
+
+
+
+
