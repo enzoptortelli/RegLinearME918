@@ -1,61 +1,116 @@
-#' @title Gráficos de resíduos
+#' @title Gráficos de verificação do modelo linear
 #' @description
-#' \code{grafico} Função utilizada para criação de gráficos de resíduos em regressão linear. Válida também para regressão linear múltipla.
+#' \code{grafico} Função utilizada para criação de gráficos para verificação do modelo linear resultante. Válida também para regressão linear multivariada.
 #'
 #'
-#' @param modelo Modelo de regressão linear simples ou múltipla. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}.
-#' Deve conter os elementos \code{dados}, \code{residuos} (ou seja, os resíduos do modelo) e \code{ajustados} (ou seja, os valores ajustados (preditos) pelo modelo).
-#' O modelo fornecido deve ter a classe "modelo_linear", caso contrário, a função gerará um erro.
-#' @param tipo É uma string que especifica o tipo de gráfico desejado. Os valores aceitos são:
+#' @param modelo Modelo de regressão linear. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}. Caso contrário, a função gerará um erro.
+#' @param tipo É um vetor do tipo \code{char} que especifica os tipos de gráficos desejados. Os valores aceitos são:
 #' \describe{
-#'   \item{rvp}{Gera gráficos de Resíduos vs Preditoras.}
-#'   \item{rva}{Gera um gráfico de Resíduos vs Valores Ajustados.}
-#'   \item{normres}{Gera um Gráfico QQPlot para avaliar a normalidade dos resíduos.}
+#'   \item{pvo}{Valores preditos x valores observados.}
+#'   \item{rvp}{Resíduos x preditora.}
+#'   \item{qqplot}{QQPlot dos resíduos.}
 #' }
 #'
 #'
 #' @examples
-#' grafico(modelo, "rvp")      # Gráfico de Resíduos vs Preditoras
-#' grafico(modelo, "rva")      # Gráfico de Resíduos vs Valores Ajustados
-#' grafico(modelo, "normres")  # Gráfico Q-Q de Normalidade dos Resíduos
 #'
 #'
 #'
 #' @export
-grafico <- function(modelo, tipo) {
+grafico <- function(modelo, tipo = c('pvo', 'rvp', 'qqplot')) {
   # verificar se a classe do modelo inserido pelo usuário é "modelo_linear":
   if (!"modelo_linear" %in% class(modelo)) {
     stop("Erro: o objeto fornecido não é um modelo linear válido.")
   }
-  # Gráfico de Resíduos vs Preditoras (rvp)
-  if (tipo == "rvp") {
-    colunas_preditoras <- colnames(modelo$dados[-1])
-    for (coluna_preditora in colunas_preditoras) {
-      plot(modelo$dados[,coluna_preditora], modelo$residuos,
-                     xlab = coluna_preditora,
-                     ylab = "Resíduos",
-                     main = "Resíduos vs Preditoras",
-                     pch = 19, col = "black")
-      abline(h = 0, col = "red", lwd = 2, lty = 5)
+
+  result <- list()
+  pvo_list <- list()
+  rvp_list <- list()
+  qq_list <- list()
+
+  var_respostas <- colnames(modelo$coeficientes)
+  var_preditoras <- rownames(modelo$coeficientes)[-1]
+
+
+  getPlot <- function(dados, x, y) {
+    return(ggplot(dados, aes(x = .data[[x]], y = .data[[y]])) +
+             theme_classic())
+  }
+
+  # Gráfico de Valores Preditos vs Observados (pvo)
+  if("pvo" %in% tipo) {
+    for(var_resposta in var_respostas) {
+      temp_dado <- data.frame(modelo$ajustados[, var_resposta], modelo$dados[, var_resposta])
+      temp_colnames <-c(paste(var_resposta, "ajustado", sep = '_'),
+                        paste(var_resposta, "observado", sep = '_'))
+
+      colnames(temp_dado) <- temp_colnames
+
+      grafico <- getPlot(temp_dado, x = temp_colnames[2], y = temp_colnames[1]) +
+        geom_point() +
+        labs(
+          title = paste('Valores preditos x observados (', var_resposta, ')'),
+          x = 'Observados',
+          y = 'Preditos'
+        )
+
+      pvo_list <- append(pvo_list,  list(grafico))
     }
+    names(pvo_list) <- var_respostas
   }
-  # Gráfico de Resíduos vs Valores Ajustados (rva)
-  else if (tipo == "rva") {
-    plot(modelo$ajustados, modelo$residuos,
-                   xlab = "Valores Preditos",
-                   ylab = "Resíduos",
-                   main = "Resíduos vs Preditos",
-                   pch = 19, col = "black")
-    abline(h = 0, col = "red", lwd = 2, lty = 5)
+
+  # Gráfico de Resíduos vs Preditoras (rvp)
+  if('rvp' %in% tipo) {
+    temp_nomes_list <- c()
+    for(var_preditora in var_preditoras) {
+      for(var_resposta in var_respostas) {
+        temp_dado <- data.frame(modelo$residuos[, var_resposta], modelo$dados[, var_preditora])
+        temp_colnames <-c('residuos',
+                          paste(var_resposta, "observado", sep = '_'))
+        colnames(temp_dado) <- temp_colnames
+
+        grafico <- getPlot(temp_dado, y = temp_colnames[1], x = temp_colnames[2]) +
+          geom_point() +
+          geom_hline(yintercept = 0, color = 'red') +
+          labs(
+            title = paste('Resíduos (', var_resposta, ') x  preditora (', var_preditora, ')'),
+            y = 'Resíduos',
+            x = 'Preditora'
+          )
+        rvp_list <- append(rvp_list, list(grafico))
+        temp_nomes_list <- c(paste(var_resposta, var_preditora, sep = '_'), temp_nomes_list)
+
+      }
+    }
+    names(rvp_list) <- temp_nomes_list
   }
-  # Gráfico de Normalidade dos Resíduos (normres)
-  else if (tipo == "normres") {
-    qqnorm(modelo$residuos, xlab = "Quantis Teóricos", ylab = "Quantis Amostrais", main = "Q-Q Plot dos Resíduos")
-      qqline(modelo$residuos, col = "red")
+
+  # QQ-plot dos resíduos
+  if('qqplot' %in% tipo) {
+    for(var_resposta in var_respostas) {
+      temp_dado <- data.frame(modelo$residuos[, var_resposta])
+      colnames(temp_dado) <- var_resposta
+
+      grafico <- ggplot(temp_dado, aes(sample = .data[[var_resposta]])) +
+        geom_qq() +
+        geom_qq_line() +
+        labs(title = paste('QQ-plot resíduos de', var_resposta),
+             x = 'Quantil teórico',
+             y = 'Quantil amostral'
+        ) +
+        theme_classic()
+
+      qq_list <- append(qq_list, list(grafico))
+    }
+    names(qq_list) <- var_respostas
   }
-  # Qualquer outro tipo
-  else {
-    stop("Erro: tipo de gráfico inválido. Use 'rvp' para resíduos vs preditoras, 'rva' para resíduos vs ajustados, ou 'normres' para normalidade dos resíduos.")
-  }
+
+
+  result <- list('pvo' = pvo_list,
+                 'rvp' = rvp_list,
+                 'qqplot' = qq_list)
+  return(result)
 }
+
+# grafico(reg_linear(iris[, c(1, 3)], iris[, c(2, 4)]), tipo = c('pvo', 'rvp', 'qqplot'))
 
