@@ -1,31 +1,22 @@
-#' @title Gráficos de resíduos
+#' @title Gráficos de verificação do modelo linear
 #' @description
-#' \code{grafico} Função utilizada para criação de gráficos de resíduos em regressão linear. Válida também para regressão linear múltipla.
+#' \code{grafico} Função utilizada para criação de gráficos para verificação do modelo linear resultante. Válida também para regressão linear multivariada.
 #'
 #'
-#' @param modelo Modelo de regressão linear simples ou múltipla. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}.
-#' Deve conter os elementos \code{dados}, \code{residuos} (ou seja, os resíduos do modelo) e \code{ajustados} (ou seja, os valores ajustados (preditos) pelo modelo).
-#' O modelo fornecido deve ter a classe "modelo_linear", caso contrário, a função gerará um erro.
-#' @param tipo É uma string que especifica o tipo de gráfico desejado. Os valores aceitos são:
+#' @param modelo Modelo de regressão linear. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}. Caso contrário, a função gerará um erro.
+#' @param tipo É um vetor do tipo \code{char} que especifica os tipos de gráficos desejados. Os valores aceitos são:
 #' \describe{
-#'   \item{rvp}{Gera gráficos de Resíduos vs Preditoras.}
-#'   \item{rva}{Gera um gráfico de Resíduos vs Valores Ajustados.}
-#'   \item{normres}{Gera um Gráfico QQPlot para avaliar a normalidade dos resíduos.}
+#'   \item{pvo}{Valores preditos x valores observados.}
+#'   \item{rvp}{Resíduos x preditora.}
+#'   \item{qqplot}{QQPlot dos resíduos.}
 #' }
 #'
 #'
 #' @examples
-#' grafico(modelo, "rvp")      # Gráfico de Resíduos vs Preditoras
-#' grafico(modelo, "rva")      # Gráfico de Resíduos vs Valores Ajustados
-#' grafico(modelo, "normres")  # Gráfico Q-Q de Normalidade dos Resíduos
 #'
 #'
 #'
 #' @export
-
-
-
-
 grafico <- function(modelo, tipo) {
   # verificar se a classe do modelo inserido pelo usuário é "modelo_linear":
   if (!"modelo_linear" %in% class(modelo)) {
@@ -114,23 +105,6 @@ grafico <- function(modelo, tipo) {
     names(qq_list) <- var_respostas
   }
 
-  # Gráfico de Resíduos vs Ordem de coleta (rvo)
-  # if('rvo' %in% tipo) {
-  #   temp_dado <- as.data.frame(modelo$residuos)
-  #   grafico <- ggplot(data = temp_dado, aes(y = V1, x = 1:length(modelo$residuos))) +
-  #     geom_point() +
-  #     labs(
-  #       title = 'Resíduos x Ordem dos dados',
-  #       y = 'Resíduos',
-  #       x = 'Ordem dos dados'
-  #     )
-  # }
-
-
-  # Qualquer outro tipo
-  # else {
-  #   stop("Erro: tipo de gráfico inválido. Use 'pvo' para preditos vs observados ou 'rvo' para resíduos vs ordem de coleta.")
-  # }
 
   result <- list('pvo' = pvo_list,
                  'rvp' = rvp_list,
@@ -138,5 +112,5 @@ grafico <- function(modelo, tipo) {
   return(result)
 }
 
-grafico(reg_linear(iris[, c(1, 3)], iris[, c(2, 4)]), tipo = c('pvo', 'rvp', 'qqplot'))
+# grafico(reg_linear(iris[, c(1, 3)], iris[, c(2, 4)]), tipo = c('pvo', 'rvp', 'qqplot'))
 
