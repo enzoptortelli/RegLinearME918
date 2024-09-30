@@ -18,7 +18,7 @@ test_that("A função reg_linear() lida com colunas constantes", {
 test_that("A função reg_linear() lida com matrizes de posto incompleto", {
   # Criar uma matriz com colinearidade
   x.1 <- iris[, 2]
-  x.2 <- iris[, 2] * 2  # Multiplo perfeito de x.1
+  x.2 <- iris[, 2] * 5  # Multiplo perfeito de x.1
   y.resposta <- 3 * x.1 + 2 * iris[, 3]
 
   df.teste <- data.frame("Resposta" = y.resposta, "Preditora.1" = x.1, "Preditora.2" = x.2)
