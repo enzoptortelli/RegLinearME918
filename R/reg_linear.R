@@ -34,13 +34,6 @@ reg_linear <- function(x, y){
     stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ter o mesmo número de observações")
   }
 
-  # Remover colunas constantes
-  const_cols <- apply(x, 2, function(col) length(unique(col)) == 1)
-  if (any(const_cols)) {
-    message("Removendo colunas constantes da matriz preditora.")
-    x <- x[, !const_cols]
-  }
-
   # Criando a matriz X (matriz de delineamento ou matriz de regressão):
   mx <- cbind(1, x)
   # Estimando os coeficientes betas na forma matricial beta_hat = (X'X)^-1 X'Y (%*% é o símbolo de multiplicação matricial):

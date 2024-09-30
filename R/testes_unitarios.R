@@ -11,13 +11,9 @@ test_that("A função reg_linear() lida com colunas constantes", {
   x.3 <- iris[, 3]
   y.resposta <- x.1 + 3 * x.2 + 2 * x.3
   df.teste <- data.frame("Resposta" = y.resposta, "Preditora.1" = x.1, "Preditora.2" = x.2, "Preditora.3" = x.3)
-  expect_warning(
-    modelo.teste <- reg_linear(df.teste[, 2:4], df.teste[, 1]),
-    "Removendo colunas constantes"
-  )
-
-  expect_true("modelo_linear" %in% class(modelo.teste))
+  expect_error(reg_linear(df.teste[, 2:4], df.teste[, 1]))
 })
+
 
 test_that("A função reg_linear() lida com matrizes de posto incompleto", {
   # Criar uma matriz com colinearidade
@@ -26,9 +22,8 @@ test_that("A função reg_linear() lida com matrizes de posto incompleto", {
   y.resposta <- 3 * x.1 + 2 * iris[, 3]
 
   df.teste <- data.frame("Resposta" = y.resposta, "Preditora.1" = x.1, "Preditora.2" = x.2)
-  modelo.teste <- reg_linear(df.teste[, 2:3], df.teste[, 1])
+  expect_error(reg_linear(df.teste[, 2:3], df.teste[, 1]))
 
-  expect_true("modelo_linear" %in% class(modelo.teste))
 })
 
 test_that("A função reg_linear() lida com ajustes perfeitos", {
