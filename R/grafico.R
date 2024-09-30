@@ -4,15 +4,15 @@
 #'
 #'
 #' @param modelo Modelo de regressão linear simples ou múltipla. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}.
-#' Deve conter os elementos \code{dados}, \code{residuos} (ou seja, os resíduos do modelo) e \code{ajustados} (ou seja, os valores ajustados (preditos) pelo modelo). 
-#' O modelo fornecido deve ter a classe "modelo_linear", caso contrário, a função gerará um erro. 
+#' Deve conter os elementos \code{dados}, \code{residuos} (ou seja, os resíduos do modelo) e \code{ajustados} (ou seja, os valores ajustados (preditos) pelo modelo).
+#' O modelo fornecido deve ter a classe "modelo_linear", caso contrário, a função gerará um erro.
 #' @param tipo É uma string que especifica o tipo de gráfico desejado. Os valores aceitos são:
 #' \describe{
 #'   \item{rvp}{Gera gráficos de Resíduos vs Preditoras.}
 #'   \item{rva}{Gera um gráfico de Resíduos vs Valores Ajustados.}
 #'   \item{normres}{Gera um Gráfico QQPlot para avaliar a normalidade dos resíduos.}
 #' }
-#' 
+#'
 #'
 #' @examples
 #' grafico(modelo, "rvp")      # Gráfico de Resíduos vs Preditoras
@@ -46,19 +46,16 @@ grafico <- function(modelo, tipo) {
                    ylab = "Resíduos",
                    main = "Resíduos vs Preditos",
                    pch = 19, col = "black")
-    abline(h = 0, col = "red", lwd = 2, lty = 5) 
+    abline(h = 0, col = "red", lwd = 2, lty = 5)
   }
   # Gráfico de Normalidade dos Resíduos (normres)
   else if (tipo == "normres") {
-      qqnorm(modelo$residuos) 
+    qqnorm(modelo$residuos, xlab = "Quantis Teóricos", ylab = "Quantis Amostrais", main = "Q-Q Plot dos Resíduos")
       qqline(modelo$residuos, col = "red")
-      xlab = "Quantis Teóricos"
-      ylab = "Quantis Amostrais"
   }
   # Qualquer outro tipo
   else {
     stop("Erro: tipo de gráfico inválido. Use 'rvp' para resíduos vs preditoras, 'rva' para resíduos vs ajustados, ou 'normres' para normalidade dos resíduos.")
   }
-  
 }
 
