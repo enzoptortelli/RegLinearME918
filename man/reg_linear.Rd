@@ -7,21 +7,30 @@
 reg_linear(x, y)
 }
 \arguments{
-\item{x}{Variáveis preditores do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matrix pela função \code{as.matrix}.}
+\item{x}{Variáveis preditoras do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matriz pela função \code{as.matrix}.}
 
-\item{y}{Variáveis respostas do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matrix pela função \code{as.matrix}.}
+\item{y}{Variável resposta do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matriz pela função \code{as.matrix}.}
 }
 \value{
-\code{reg_linear} retorna uma lista da classe "modelo_linear". Essa lista possui os seguintes dados:
+\code{reg_linear} retorna uma lista da classe "modelo_linear". Esta lista possui os seguintes componentes:
 \describe{
-  \item{coeficientes}{os valores estimados dos coeficientes do modelo.}
-  \item{dados}{os dados utilizados para se criar o modelo.}
-  \item{residuos}{os resíduos; ou seja, o valor da resposta menos o valor ajustado}
-  \item{ajustado}{os valores de ajuste do modelo; ou seja, os valores de \code{x} aplicados à função de regressão.}
+  \item{coeficientes}{Os valores estimados dos coeficientes do modelo.}
+  \item{dados}{Os dados utilizados para se criar o modelo.}
+  \item{residuos}{Os resíduos; ou seja, a diferença entre o valor observado da resposta e o valor ajustado.}
+  \item{ajustados}{Os valores ajustados pelo modelo; ou seja, os valores preditos aplicados às preditoras.}
 }
-
-FALTA EXEMPLO
 }
 \description{
-\code{reg_linear} deve ser usada pra criar modelo de regressão lineares, incluindo multivariados.
+\code{reg_linear} deve ser usada para ajustar modelos de regressão linear, incluindo modelos multivariados.
+}
+
+\examples{
+# Exemplo com o conjunto de dados iris:
+modelo <- reg_linear(iris[, 1:3], iris[, 4])
+
+# Exemplo de uso com um conjunto de dados simulado:
+x1 <- rnorm(100)
+x2 <- rnorm(100)
+y <- 3 * x1 + 2 * x2 + rnorm(100)
+modelo_simulado <- reg_linear(cbind(x1, x2), y)
 }

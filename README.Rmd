@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# Pacote de Regressão Linear
+Este pacote foi desenvolvido para fornecer ferramentas simples e eficientes para ajuste de modelos de regressão linear, bem como para gerar predições a partir desses modelos.
+
+# Instalação
+Você pode instalar diretamente a partir do GitHub usando:
+```{r}
+# install.packages("devtools")
+devtools::install_github("")
+
+```
+# Exemplo de Uso
+Aqui está um exemplo básico que mostra como ajustar um modelo de regressão linear com dados simulados e como fazer predições.
+```{r}
+# Carregando o pacote 
+library(pacote_regressao_linear)
+
+# Gerando um conjunto de dados de exemplo
+set.seed(123)
+x1 <- rnorm(100)
+x2 <- rnorm(100)
+y <- 3 * x1 + 2 * x2 + rnorm(100)
+
+# Ajustando o modelo de regressão linear
+modelo <- reg_linear(cbind(x1, x2), y)
+
+# Visualizando os coeficientes estimados
+modelo$coeficientes
+
+# Gerando predições com novos dados
+novos_preditores <- matrix(c(1, 5, 2, 6, 3, 7), nrow = 3, byrow = TRUE)
+predicao(modelo, novos_preditores)
+
+
+```
+
+# Visualizando Gráficos
+Você também pode visualizar gráficos, por exemplo, a relação entre as variáveis preditoras e a resposta:
+
+```{r}
+plot(x1, y, main = "Relação entre x1 e y", xlab = "x1", ylab = "y")
+abline(lm(y ~ x1), col = "red")
+
+```
+
+#Licença
+Este pacote está disponível sob a licença MIT

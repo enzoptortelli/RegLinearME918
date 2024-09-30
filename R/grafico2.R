@@ -9,7 +9,7 @@ grafico <- function(modelo, tipo) {
   rvp_list <- list()
 
   var_respostas <- colnames(modelo$coeficientes)
-  var_preditoas <- rownames(modelo$coeficientes)[-1]
+  var_preditoras <- rownames(modelo$coeficientes)[-1]
 
   salvar_plot <- function(dados, nome_var) {
     ggplot(dados, aes())
@@ -63,6 +63,7 @@ grafico <- function(modelo, tipo) {
         y = 'Resíduos',
         x = 'Ordem dos dados'
       )
+    rvo_list <- append(rvo_list, list(grafico_rvo))
   }
   # Qualquer outro tipo
   # else {
@@ -70,7 +71,8 @@ grafico <- function(modelo, tipo) {
   # }
 
   result <- list('pvo' = pvo_list,
-                 'rvp' = rvp_list)
+                 'rvp' = rvp_list,
+                 'rvo' = rvo_list)
   return(result)
 }
 
