@@ -47,6 +47,7 @@ abline(lm(y ~ x1), col = "red")
 
 ## Funções Principais
 reg_linear(): Ajusta um modelo de regressão linear. Aceita uma matriz de variáveis preditoras e uma variável resposta e retorna os coeficientes, resíduos e valores ajustados.
+
 predicao(): Gera predições a partir de um modelo ajustado com reg_linear() e uma nova matriz de preditores.
 
 ## Licença
