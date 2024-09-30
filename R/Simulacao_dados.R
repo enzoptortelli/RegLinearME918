@@ -1,12 +1,14 @@
 x_1 = rnorm(1000, 3, 1)
 x_2 = rpois(1000, 5)
 x_3 = rnorm(1000, 4, 1)
+x_4 = rbinom(1000,100,0.37)
 
-Y = 0.8*x_1 + 3*x_2 + 1.5*x_3 + 3.6 + rnorm(1000,0,1)
+Y_1 = 0.8*x_1 + 3*x_2 + 1.5*x_3 + 0.3*x_4 + 3.6 + rnorm(1000,0,1)
+Y_2 = 1*x_2 - 3.1*x_1 + 0.4*x_3 - 0.9*x_4 + 2 + rnorm(1000,0,1)
 
-meu_dataset = data.frame("Resposta" = Y, "Preditora 1" = x_1, "Preditora 2" = x_2, "Preditora 3" = x_3)
+meu_dataset = data.frame("Resposta 1" = Y_1, "Resposta 2" = Y_2, "Preditora 1" = x_1, "Preditora 2" = x_2, "Preditora 3" = x_3,"Preditora 4" = x_4)
 meu_dataset
 
 
 # Adicionar os dados no pacote
-usethis::use_data(meu_dataset)
+usethis::use_data(meu_dataset,overwrite = TRUE)
