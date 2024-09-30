@@ -33,10 +33,9 @@ print(modelo$coeficientes)
 
 # Fazendo predições com novos valores de preditores
 novos_preditores <- matrix(c(1, 5, 2, 6, 3, 7), nrow = 3, byrow = TRUE)
-predicoes <- predicao(modelo, novos_preditores)
+predicao(modelo, novos_preditores)
 
-# Exibindo os valores preditos
-print(predicoes$preditos)
+
 ```
 
 ## Visualizando Gráficos
