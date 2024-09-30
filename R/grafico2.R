@@ -87,7 +87,6 @@ grafico <- function(modelo, tipo) {
   }
 
   # Gráfico de Resíduos vs Ordem de coleta (rvo)
-
   # if('rvo' %in% tipo) {
   #   temp_dado <- as.data.frame(modelo$residuos)
   #   grafico <- ggplot(data = temp_dado, aes(y = V1, x = 1:length(modelo$residuos))) +
@@ -98,7 +97,6 @@ grafico <- function(modelo, tipo) {
   #       x = 'Ordem dos dados'
   #     )
   # }
-
 
 
   # Qualquer outro tipo
