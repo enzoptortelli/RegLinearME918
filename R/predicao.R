@@ -5,12 +5,13 @@ predicao <- function(modelo, preditores) {
   }
 
   preditores <- as.matrix(preditores)
-  preditores <- cbind(1, preditores)
+  preditores <- cbind(1, preditores)  # Adiciona uma coluna de 1 para o intercepto
 
   # Verificar se o número de preditores é compatível com os coeficientes do modelo
   if (ncol(preditores) != nrow(modelo$coeficientes)) {
     stop("Erro: o número de preditores não corresponde ao número de coeficientes no modelo.")
   }
+
 
   result <- list(
     preditores = preditores,
@@ -20,3 +21,4 @@ predicao <- function(modelo, preditores) {
   class(result) <- "predicao"
   return(result)
 }
+

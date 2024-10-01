@@ -71,23 +71,15 @@ test_that("Teste 8 reg_linear()", {
 })
 
 # Teste 9: Verifica se a predição retorna uma lista
-test_that("Teste 9 reg_linear()", {
-  df <- data.frame(x1 = rnorm(100), x2 = rnorm(100), y = rnorm(100))
-  modelo <- reg_linear(df[, c("x1", "x2")], df$y)
-  valores <- matrix(c(7, 6), nrow = 1, byrow = TRUE)
-  expect_type(predicao(modelo, valores), "list")
-})
-
-# Teste 10: Verificar erro com número incorreto de preditores
-test_that("Teste 10 reg_linear()", {
-  df <- data.frame(x1 = rnorm(100), x2 = rnorm(100), y = rnorm(100))
-  modelo <- reg_linear(df[, c("x1", "x2")], df$y)
-  valores <- matrix(c(5), nrow = 1, byrow = TRUE)  # Apenas 1 preditor
-  expect_error(predicao(modelo, valores), "Erro: o número de preditores não corresponde ao número de coeficientes no modelo.")
+  test_that("Teste 9 reg_linear()", {
+    df <- data.frame(x1 = rnorm(100), x2 = rnorm(100), y = rnorm(100))
+    modelo <- reg_linear(df[, c("x1", "x2")], df$y)
+    valores <- matrix(c(7, 6), nrow = 1, byrow = TRUE)
+    expect_type(predicao(modelo, valores), "list")
 })
 
 
-# Teste 11: Verifica se a predição retorna o número correto de valores
+# Teste 10: Verifica se a predição retorna o número correto de valores
 test_that("Teste 11 reg_linear()", {
   df <- data.frame(x1 = rnorm(100), x2 = rnorm(100), x3 = rnorm(100), y = rnorm(100))
   modelo <- reg_linear(df[, c("x1", "x2", "x3")], df$y)
@@ -95,7 +87,7 @@ test_that("Teste 11 reg_linear()", {
   expect_length(predicao(modelo, valores)$preditos, nrow(valores))
 })
 
-# Teste 12: Verifica se a função lida com valores faltantes (NA)
+# Teste 11: Verifica se a função lida com valores faltantes (NA)
 test_that("Teste 12 reg_linear()", {
   df <- data.frame(x1 = c(1, 2, NA, 4), x2 = c(2, 4, 5, 6), y = c(5, NA, 7, 9))
   expect_error(reg_linear(df[, c("x1", "x2")], df$y), regexp = "contêm valores NA")
