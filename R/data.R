@@ -1,13 +1,15 @@
 #' Conjunto de dados simulados
 #'
-#' Este é um conjunto de dados de exemplo incluído no pacote.
+#' Este é um conjunto de dados de exemplo incluído no pacote, gerado artificialmente para fins ilustrativos.
 #'
-#' @format Um data frame com 1000 observações, 3 variáveis preditoras, uma variável resposta.
+#' @format Um data frame com 1000 observações, 4 variáveis preditoras e 2 variáveis resposta.
 #' \describe{
-#'   \item{Resposta}{Valores gerados da seguinte forma: \code{Resposta = 0.8*Preditora.1 + 3*Preditora.2 + 1.5*Preditora.3 + 3.6 + rnorm(1000,0,1)}}
+#'   \item{Resposta.1}{Valores gerados da seguinte forma: \code{Resposta.1 = 0.8 * Preditora.1 + 3 * Preditora.2 + 1.5 * Preditora.3 + 0.3 * Preditora.4 + 3.6 + rnorm(1000,0,1)}}
+#'   \item{Resposta.2}{Valores gerados da seguinte forma: \code{Resposta.2 = 1 * Preditora.2 - 3.1 * Preditora.1 + 0.4 * Preditora.3 - 0.9 * Preditora.4 + 2 + rnorm(1000,0,1)}}
 #'   \item{Preditora.1}{Valores gerados a partir de uma distribuição normal, com média = 3 e desvio-padrão = 1}
 #'   \item{Preditora.2}{Valores gerados a partir de uma distribuição poisson, com lambda = 5}
 #'   \item{Preditora.3}{Valores gerados a partir de uma distribuição normal, com média = 4 e desvio-padrão = 1}
+#'   \item{Preditora.4}{Valores gerados a partir de uma distribuição binomial, com 100 tentativas e probabilidade de sucesso = 0.37}
 #' }
 #' @source Gerado artificialmente para fins de exemplo no pacote.
-"meu_dataset"
+"rl_dataset"

@@ -1,22 +1,36 @@
 #' @title Gráficos de verificação do modelo linear
 #' @description
-#' \code{grafico} Função utilizada para criação de gráficos para verificação do modelo linear resultante. Válida também para regressão linear multivariada.
-#'
+#' A função \code{grafico} é utilizada para criação de gráficos para verificação do modelo linear resultante. Válida tanto para regressão linear simples quanto para regressão linear multivariada. Ela permite visualizar o ajuste do modelo e verificar os pressupostos dos resíduos.
 #'
 #' @param modelo Modelo de regressão linear. Deve ser, obrigatoriamente, da classe \code{"modelo_linear"}. Caso contrário, a função gerará um erro.
-#' @param tipo É um vetor do tipo \code{char} que especifica os tipos de gráficos desejados. Os valores aceitos são:
+#' @param tipo Vetor do tipo \code{char} que especifica os tipos de gráficos desejados. Os valores aceitos são:
 #' \describe{
-#'   \item{pvo}{Valores preditos x valores observados.}
-#'   \item{rvp}{Resíduos x preditora.}
-#'   \item{qqplot}{QQPlot dos resíduos.}
+#'   \item{pvo}{Gráfico de valores preditos x valores observados.}
+#'   \item{rvp}{Gráfico de resíduos x preditora.}
+#'   \item{qqplot}{QQ-plot dos resíduos.}
 #' }
 #'
-#'
 #' @examples
+#' # Carregando o conjunto de dados do pacote
+#' data(rl_dataset)
 #'
+#' # Ajustando o modelo de regressão linear com o rl_dataset
+#' modelo_exemplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
+#'                              rl_dataset[, c("Resposta.1", "Resposta.2")])
 #'
+#' # Gerando gráficos de verificação do modelo ajustado
+#' # Gráfico de Valores Preditos x Observados
+#' grafico(modelo_exemplo, tipo = "pvo")
 #'
+#' # Gráfico de Resíduos x Preditoras
+#' grafico(modelo_exemplo, tipo = "rvp")
+#'
+#' # QQ-plot dos Resíduos
+#' grafico(modelo_exemplo, tipo = "qqplot")
+#'
+#' @import ggplot2
 #' @export
+
 grafico <- function(modelo, tipo = c('pvo', 'rvp', 'qqplot')) {
   # verificar se a classe do modelo inserido pelo usuário é "modelo_linear":
   if (!"modelo_linear" %in% class(modelo)) {

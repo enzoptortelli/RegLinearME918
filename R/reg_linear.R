@@ -1,26 +1,40 @@
 #' @title Ajuste de Modelos Lineares
 #' @description
-#' \code{reg_linear} deve ser usada pra criar modelo de regressão lineares, incluindo multivariados.
+#' A função \code{reg_linear} deve ser usada para ajustar modelos de regressão linear, incluindo modelos multivariados.
 #'
-#' @param x Variáveis preditores do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matrix pela função \code{as.matrix}.
-#' @param y Variáveis respostas do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matrix pela função \code{as.matrix}.
+#' @param x Variáveis preditoras do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matriz pela função \code{as.matrix}.
+#' @param y Variáveis respostas do modelo. Deve ser um objeto do tipo \code{numeric} que seja coercível a uma matriz pela função \code{as.matrix}.
 #'
-#' @returns \code{reg_linear} retorna uma lista da classe "modelo_linear". Essa lista possui os seguintes dados:
-#'\describe{
-#'   \item{coeficientes}{os valores estimados dos coeficientes do modelo.}
-#'   \item{dados}{os dados utilizados para se criar o modelo.}
-#'   \item{residuos}{os resíduos; ou seja, o valor da resposta menos o valor ajustado}
-#'   \item{ajustados}{os valores de ajuste do modelo; ou seja, os valores de \code{x} aplicados à função de regressão.}
+#' @returns \code{reg_linear} retorna uma lista da classe \code{"modelo_linear"} contendo os seguintes componentes:
+#' \describe{
+#'   \item{coeficientes}{Os valores estimados dos coeficientes do modelo.}
+#'   \item{dados}{Os dados utilizados para criar o modelo.}
+#'   \item{residuos}{Os resíduos, ou seja, a diferença entre o valor observado da resposta e o valor ajustado pelo modelo.}
+#'   \item{ajustados}{Os valores ajustados do modelo; ou seja, os valores preditos de \code{y} com base nos preditores \code{x}.}
 #' }
 #'
+#' @details
+#' A função ajusta um modelo de regressão linear com base nos preditores e na variável resposta fornecidos. Ela utiliza a forma matricial da regressão linear para calcular os coeficientes de ajuste.
+#'
 #' @examples
-#' reg_linear(meu_dataset[,2:4], meu_dataset[,1])
-#' reg_linear(iris[,1], iris[,2])
+#' # Carregando o conjunto de dados do pacote
+#' data(rl_dataset)
 #'
+#' # Ajustando um modelo de regressão linear simples
+#' modelo_simples <- reg_linear(rl_dataset[, "Preditora.1"], rl_dataset[, "Resposta.1"])
+#' modelo_simples$coeficientes
 #'
+#' # Ajustando um modelo de regressão linear múltipla
+#' modelo_multiplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
+#'                               rl_dataset[, c("Resposta.1", "Resposta.2")])
+#' modelo_multiplo$coeficientes
 #'
+#' # Ajustando um modelo com o dataset iris
+#' modelo_iris <- reg_linear(iris[, 1], iris[, 2])
+#' modelo_iris$coeficientes
 #'
 #' @export
+
 reg_linear <- function(x, y){
   x <- as.matrix(x)
   y <- as.matrix(y)
@@ -50,7 +64,12 @@ reg_linear <- function(x, y){
   # Cálculo dos resíduos (e):
   e <- y - y_hat
 
-  rownames(betas)[1] <- 'Intercepto'
+  # Atribuindo nomes aos coeficientes (se possível)
+  if (!is.null(colnames(x))) {
+    rownames(betas) <- c("Intercepto", colnames(x))
+  } else {
+    rownames(betas) <- c("Intercepto", paste0("X", 1:(ncol(x))))
+  }
 
   result <- list(coeficientes = betas,
                  residuos = e,
