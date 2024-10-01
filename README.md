@@ -60,4 +60,6 @@ grafico(modelo_exemplo, tipo = "qqplot")
 ```
 
 ## Licença
-Este pacote está disponível sob a licença MIT
+
+Este pacote está disponível sob a licença **GNU General Public License**. Para mais detalhes, consulte o arquivo LICENSE.
+
