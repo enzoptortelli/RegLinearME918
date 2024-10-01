@@ -112,5 +112,5 @@ grafico <- function(modelo, tipo = c('pvo', 'rvp', 'qqplot')) {
   return(result)
 }
 
-# grafico(reg_linear(iris[, c(1, 3)], iris[, c(2, 4)]), tipo = c('pvo', 'rvp', 'qqplot'))
+#grafico(reg_linear(iris[, c(1, 3)], iris[, c(2, 4)]), tipo = c('pvo', 'rvp', 'qqplot'))
 

@@ -2,3 +2,5 @@
 
 export(reg_linear)
 export(predicao)
+export(grafico)
+import(ggplot2)
