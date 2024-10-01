@@ -41,8 +41,6 @@ predicao(modelo, novos_preditores)
 ## Visualizando Gráficos
 Você também pode visualizar gráficos, como por exemplo a relação entre uma variável preditora e a variável resposta:
 ```r
-plot(x1, y, main = "Relação entre x1 e y", xlab = "x1", ylab = "y")
-abline(lm(y ~ x1), col = "red")
 ```
 
 ## Funções Principais
