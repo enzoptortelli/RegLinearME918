@@ -10,6 +10,11 @@ reg_linear <- function(x, y){
     stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ser variáveis contínuas")
   }
 
+  # Verificar se há NAs
+  if (any(is.na(x)) || any(is.na(y))) {
+    stop("Erro: os dados contêm valores NA.")
+  }
+
   # Verificar se x e y possuem o mesmo tamanho no banco de dados:
   if (!all(sapply(x, length) != length(y))) {
     stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ter o mesmo número de observações")

@@ -3,6 +3,7 @@ predicao <- function(modelo, preditores) {
   if (!"modelo_linear" %in% class(modelo)) {
     stop("Erro: o objeto fornecido não é um modelo linear válido.")
   }
+
   preditores <- as.matrix(preditores)
   preditores <- cbind(1, preditores)
 
