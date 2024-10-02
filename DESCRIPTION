@@ -1,17 +1,21 @@
-Package: ME918SA2024S2trabalho2
-Type: Package
-Title: What the Package Does (Title Case)
+Package: Reg_Linear_ME918
+Title: Ferramentas para Regressão Linear Simples e Múltipla
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    person("Luiz Felipe", "de Oliveira Barbosa Nunes", , "l255403@dac.unicamp.br", role = c("aut", "cre"))
+    person("Enzo", "Putton Tortelli", , "e204256@dac.unicamp.br", role = c("aut", "cre"))
+    person("Lara Maria", "Herrera Drugowick", , "l236181@dac.unicamp.br", role = c("aut", "cre"))
+    person("Eric", "Pavarim Lima", , "e247471@dac.unicamp.br", role = c("aut", "cre"))
+Description: O pacote fornece funções para ajuste de modelos de regressão linear simples e múltipla, além de geração de predições e gráficos para verificação do modelo ajustado. As funções principais incluem 'reg_linear' para ajuste de modelos, 'predicao' para gerar predições e 'grafico' para visualização de diagnósticos, utilizando um conjunto de dados fictício.
+License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)
+LazyData: true
+Imports: 
+    ggplot2
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

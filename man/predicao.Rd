@@ -2,40 +2,37 @@
 % Please edit documentation in R/predicao.R
 \name{predicao}
 \alias{predicao}
-\title{Predição com Modelo de Regressão Linear}
+\title{Função de Predição para Modelos Lineares}
 \usage{
 predicao(modelo, preditores)
 }
 \arguments{
-\item{modelo}{Um modelo de regressão linear ajustado pela função \code{reg_linear}, da classe \code{"modelo_linear"}.}
+\item{modelo}{Um modelo de regressão linear da classe \code{"modelo_linear"}. Caso contrário, a função irá gerar um erro.}
 
-\item{preditores}{Uma matriz ou data frame de variáveis preditoras para as quais as predições serão feitas. Deve ser coercível para uma matriz através da função \code{as.matrix}. O número de preditores deve corresponder ao número de coeficientes do modelo.}
+\item{preditores}{Uma matriz ou data frame contendo os valores preditores. O número de preditores deve ser compatível com o modelo ajustado.}
 }
 \value{
-\code{predicao} retorna uma lista da classe \code{"predicao"} com os seguintes elementos:
-\describe{
-  \item{preditores}{A matriz de preditores usada para gerar as predições.}
-  \item{preditos}{Os valores preditos gerados pela multiplicação dos preditores pelos coeficientes do modelo.}
-}
+Retorna um objeto da classe \code{"predicao"}, contendo:
+\item{preditores}{Os preditores utilizados na predição (incluindo a coluna de intercepto).}
+\item{preditos}{Os valores preditos calculados pelo modelo.}
 }
 \description{
-A função \code{predicao} gera predições a partir de um modelo de regressão linear ajustado, usando um conjunto de variáveis preditoras. O número de preditores fornecido deve corresponder ao número de coeficientes no modelo.
+A função \code{predicao} realiza predições a partir de um modelo de regressão linear ajustado. Ela utiliza o modelo fornecido e aplica os preditores fornecidos para calcular os valores preditos.
+A função pode ser aplicada tanto em modelos de regressão simples quanto multivariada.
 }
 \examples{
-# Exemplo de uso com um modelo ajustado:
+# Carregando o conjunto de dados do pacote
+data(rl_dataset)
 
-# Simulando dados:
-x1 <- rnorm(100)
-x2 <- rnorm(100)
-y <- 3 * x1 + 2 * x2 + rnorm(100)
+# Ajustando o modelo de regressão linear com o rl_dataset
+modelo_exemplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
+                             rl_dataset[, c("Resposta.1", "Resposta.2")])
 
-# Ajustando o modelo:
-modelo <- reg_linear(cbind(x1, x2), y)
+# Fazendo predições com novos valores de preditores
+novos_preditores <- matrix(c(3, 4, 5, 2, 1, 6, 7, 3), nrow = 2, byrow = TRUE)
+resultado_predicao <- predicao(modelo_exemplo, novos_preditores)
 
-# Fazendo predições:
-novos_preditores <- matrix(c(1, 2, 3, 4), nrow = 2, byrow = TRUE)
-predicao(modelo, novos_preditores)
+
+resultado_predicao$preditos
 
 }
-\keyword{regression}
-\keyword{prediction}
