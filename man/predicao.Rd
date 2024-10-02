@@ -31,8 +31,6 @@ modelo_exemplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Predi
 # Fazendo predições com novos valores de preditores
 novos_preditores <- matrix(c(3, 4, 5, 2, 1, 6, 7, 3), nrow = 2, byrow = TRUE)
 resultado_predicao <- predicao(modelo_exemplo, novos_preditores)
-
-
 resultado_predicao$preditos
 
 }
