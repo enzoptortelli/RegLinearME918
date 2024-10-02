@@ -84,5 +84,3 @@ reg_linear <- function(x, y){
 }
 
 
-
-

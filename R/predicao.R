@@ -21,8 +21,6 @@
 #' # Fazendo predições com novos valores de preditores
 #' novos_preditores <- matrix(c(3, 4, 5, 2, 1, 6, 7, 3), nrow = 2, byrow = TRUE)
 #' resultado_predicao <- predicao(modelo_exemplo, novos_preditores)
-#'
-#'
 #' resultado_predicao$preditos
 #'
 #' @export
@@ -51,4 +49,3 @@ predicao <- function(modelo, preditores) {
   class(result) <- "predicao"
   return(result)
 }
-
