@@ -1,4 +1,4 @@
-# Reg_Linear_ME918
+# RegLinearME918
 
 Este pacote foi desenvolvido para fornecer ferramentas para ajuste de modelos de regressão linear e predições a partir desses modelos. Ele é útil para realizar análises de regressão linear simples, múltipla e multivariada de forma rápida e eficiente. O pacote também fornece um conjunto de dados, chamado rl_dataset, que pode ser usado para ilustrar o uso das funções.
 
