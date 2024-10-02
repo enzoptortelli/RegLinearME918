@@ -3,7 +3,7 @@ Title: Ferramentas para Regressão Linear Simples e Múltipla
 Version: 0.1.0
 Authors@R: 
   c(
-    person("Luiz Felipe", "de Oliveira Barbosa Nunes", email = "l255403@dac.unicamp.br", role = c("aut")),
+    person("Luiz Felipe", "de Oliveira Barbosa Nunes", email = "l255403@dac.unicamp.br", role = c("aut","cre")),
     person("Enzo", "Putton Tortelli", email = "e204256@dac.unicamp.br", role = c("aut")),
     person("Lara Maria", "Herrera Drugowick", email = "l236181@dac.unicamp.br", role = c("aut")),
     person("Eric", "Pavarim Lima", email = "e247471@dac.unicamp.br", role = c("aut"))
