@@ -12,6 +12,10 @@ Você pode instalar o pacote diretamente a partir do GitHub usando o seguinte co
 
 # Depois, instale o pacote diretamente do GitHub:
 devtools::install_github("enzoptortelli/ME918A2024S2trabalho2")
+
+#Carregue o pacote
+#installed.packages()["RegLinearME918", ]
+library(RegLinearME918)
 ```
 
 ## Exemplo de Uso
