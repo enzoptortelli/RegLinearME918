@@ -1,6 +1,6 @@
-# Pacote de Regressão Linear
+# Reg_Linear_ME918
 
-Este pacote foi desenvolvido para fornecer ferramentas para ajuste de modelos de regressão linear e predições a partir desses modelos. Ele é útil para realizar análises de regressão linear simples e múltipla de forma rápida e eficiente. O pacote também fornece um conjunto de dados, chamado rl_dataset, que pode ser usado para ilustrar o uso das funções.
+Este pacote foi desenvolvido para fornecer ferramentas para ajuste de modelos de regressão linear e predições a partir desses modelos. Ele é útil para realizar análises de regressão linear simples, múltipla e multivariada de forma rápida e eficiente. O pacote também fornece um conjunto de dados, chamado rl_dataset, que pode ser usado para ilustrar o uso das funções.
 
 ## Instalação
 
@@ -33,8 +33,6 @@ modelo_exemplo$coeficientes
 novos_preditores <- matrix(c(1, 5, 2, 6, 3, 7, 4, 9), nrow = 2, byrow = TRUE)
 predicoes <- predicao(modelo_exemplo, novos_preditores)
 predicoes$preditos
-
-
 
 ```
 ## Gráficos Disponíveis
