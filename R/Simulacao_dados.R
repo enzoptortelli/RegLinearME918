@@ -1,21 +1,20 @@
 # Gerando os dados conforme especificado
-x_1 <- rnorm(1000, 3, 1)
-x_2 <- rpois(1000, 5)
-x_3 <- rnorm(1000, 4, 1)
-x_4 <- rbinom(1000, 100, 0.37)
+ram_qty = sample(c(4,6,8,12,16),1000, replace = TRUE)
+cpu_benchmark = rnorm(1000, 18, 4)
+gpu_benchmark = rnorm(1000, 18, 4)
 
-Y_1 <- 0.8 * x_1 + 3 * x_2 + 1.5 * x_3 + 0.3 * x_4 + 3.6 + rnorm(1000, 0, 1)
-Y_2 <- 1 * x_2 - 3.1 * x_1 + 0.4 * x_3 - 0.9 * x_4 + 2 + rnorm(1000, 0, 1)
+price = gpu_benchmark*100 + cpu_benchmark*50 + ram_qty*50 + 50 + rnorm(1000, 0, 1)
+boot_speed = 40 - gpu_benchmark*0.4 - cpu_benchmark*0.8-ram_qty*0.5 + rnorm(1000, 0, 1)
 
 # Criando o data frame
 rl_dataset <- data.frame(
-  "Resposta 1" = Y_1,
-  "Resposta 2" = Y_2,
-  "Preditora 1" = x_1,
-  "Preditora 2" = x_2,
-  "Preditora 3" = x_3,
-  "Preditora 4" = x_4
+  "price ($)" = price, 
+  "boot_speed (s)" = boot_speed, 
+  gpu_benchmark, 
+  cpu_benchmark, 
+  ram_qty)
 )
 
 # Adicionando os dados ao pacote
 usethis::use_data(rl_dataset, overwrite = TRUE)
+
