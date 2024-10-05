@@ -33,11 +33,11 @@ Você pode instalar o pacote diretamente a partir do GitHub usando o pacote `dev
 # Primeiro, instale o pacote 'devtools' caso ainda não tenha:
 # install.packages("devtools")
 
-# Depois, instale o pacote diretamente do GitHub:
+# Depois, instale o pacote RegLinearME918 diretamente do GitHub:
 devtools::install_github("enzoptortelli/RegLinearME918")
 ```
 
-Quando você carregar o pacote `RegLinearME918`, automaticamente o pacote `ggplot2` será instalado.
+Quando você carregar o pacote `RegLinearME918`, o pacote `ggplot2` será instalado automaticamente.
 
 ## Exemplo de Uso
 
