@@ -4,33 +4,35 @@
 \alias{predicao}
 \title{Função de Predição para Modelos Lineares}
 \usage{
-predicao(modelo, preditores)
+predicao(modelo, preditores, alpha = 0.05, tipo = "pontual")
 }
 \arguments{
-\item{modelo}{Um modelo de regressão linear da classe \code{"modelo_linear"}. Caso contrário, a função irá gerar um erro.}
+\item{modelo}{Um modelo de regressão linear da classe \code{modelo_linear}.}
 
-\item{preditores}{Uma matriz ou data frame contendo os valores preditores. O número de preditores deve ser compatível com o modelo ajustado.}
+\item{preditores}{Uma matriz, data frame ou vetor contendo os valores a serem preditos.}
+
+\item{alpha}{Um valor entre 0 e 1 para indicar o nível de confiança desejado nos intervalos (seja ele o de confiança ou de predição).}
+
+\item{tipo}{Uma string indicando o tipo de predição. Os valores possíves são \code{"pontual"}, \code{"confianca"} e \code{"predicao"}.}
 }
 \value{
-Retorna um objeto da classe \code{"predicao"}, contendo:
-\item{preditores}{Os preditores utilizados na predição (incluindo a coluna de intercepto).}
-\item{preditos}{Os valores preditos calculados pelo modelo.}
+Retorna uma lista contendo a predição desejada e o preditor associado.
 }
 \description{
-A função \code{predicao} realiza predições a partir de um modelo de regressão linear ajustado. Ela utiliza o modelo fornecido e aplica os preditores fornecidos para calcular os valores preditos.
-A função pode ser aplicada tanto em modelos de regressão simples quanto multivariada.
+A função \code{predicao} realiza predições a partir de um modelo de regressão linear da classe \code{modelo_linear}.
+A função pode ser aplicada tanto em modelos de regressão simples quanto multivariada. No caso multivariado, os intervalos resultantes têm nível de confiança simultâneo \eqn{(1 - \alpha)}.
 }
 \examples{
 # Carregando o conjunto de dados do pacote
 data(rl_dataset)
 
 # Ajustando o modelo de regressão linear com o rl_dataset
-modelo_exemplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
-                             rl_dataset[, c("Resposta.1", "Resposta.2")])
+modelo_exemplo <- reg_linear(rl_dataset[, 1:3],
+                             rl_dataset[, 4:5])
 
 # Fazendo predições com novos valores de preditores
-novos_preditores <- matrix(c(3, 4, 5, 2, 1, 6, 7, 3), nrow = 2, byrow = TRUE)
-resultado_predicao <- predicao(modelo_exemplo, novos_preditores)
+novos_preditores <- rl_dataset[1:5, 1:3]
+resultado_predicao <- predicao(modelo_exemplo, novos_preditores, tipo = 'confianca')
 resultado_predicao$preditos
 
 }
