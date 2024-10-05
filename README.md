@@ -2,14 +2,14 @@
 
 Este pacote foi desenvolvido por Enzo Putton Tortelli de Souza, Eric Pavarim Lima, Lara Maria Herrera Drugowick e Luiz Felipe de Oliveira Barbosa Nunes, como parte das atividades realizadas na disciplina de ME918-2S-2014 (Produto de Dados) do curso de Estatística da Unicamp.
 
-Com este pacote, fornecemos ferramentas simples para ajustes de modelos de regressão linear simples, múltipla e multivariada, realização de predições a partir desses modelos e construção de gráficos de diagnósticos de modelos. O pacote também fornece um conjunto de dados, chamado `rl_dataset`, que pode ser usado para ilustrar o uso das funções.
+Com este pacote, fornecemos ferramentas simples para ajustes de modelos de regressão linear simples, múltipla e multivariada, realização de predições a partir desses modelos e construção de gráficos de diagnósticos. O pacote também fornece um conjunto de dados, chamado `rl_dataset`, que pode ser usado para ilustrar o uso das funções.
 
 # Regressão Linear
-Apesar de não sermos videntes e não conseguirmos prever o futuro, fazer predições é importante para entendermos comportamentos do ambiente ao nosso redor. A regressao linear simples nos possibilita a partir de uma variavel preditora, prever algum evento resposta de nosso interesse. Um exemplo poderia ser prever o preço de computadores a partir da quantidade (em gigabytes) de memória RAM disponível.
+Apesar de não sermos videntes e não conseguirmos prever o futuro, fazer predições é importante para entendermos comportamentos do ambiente ao nosso redor. A regressão linear simples nos possibilita, a partir de uma variável preditora, prever algum evento resposta de nosso interesse. Um exemplo poderia ser prever o preço de computadores a partir da quantidade (em gigabytes) de memória RAM disponível.
 
-A ideia pode ser extendida quando quisermos prever esse custo levando em conta não somente a quantidade de memória RAM, mas também a performance das placas de vídeo (GPU) responsáveis por processarem as imagens nos computadores. Nessa situação, saímos de um modelo linear simples para um com múltiplos preditores (regressão múlptipla). Uma outra possibilidade seria não apenas prever o custo dos computadores, mas também o tempo de inicialização dos mesmos, a partir de um conjunto de variáveis preditoras como as performances das placas de vídeo (GPU), dos processadores (CPU) e a quantidade de memória RAM. Estamos diante, portanto, de uma regressão múltivariada.
+A ideia pode ser extendida quando quisermos prever esse custo levando em conta não somente a quantidade de memória RAM, mas também a performance das placas de vídeo (GPU) responsáveis por processarem as imagens nos computadores. Nessa situação, saímos de um modelo linear simples para um com múltiplos preditores (regressão múltipla). Uma outra possibilidade seria não apenas prever o custo dos computadores, mas também o tempo de inicialização dos mesmos, a partir de um conjunto de variáveis preditoras como as performances das placas de vídeo (GPU), dos processadores (CPU) e a quantidade de memória RAM. Estamos diante, portanto, de uma regressão multivariada.
 
-Explore o pacote RegLinearME918 e encontre o modelo que melhor descreva seus dados! Utilize o conjunto de dados disponibilizado ou qualquer dataset do seu interesse!
+Explore o pacote RegLinearME918 e encontre o modelo que melhor descreva seus dados! Utilize o conjunto de dados disponibilizado por nós ou qualquer dataset do seu interesse!
 
 ## Instalação
 
