@@ -28,7 +28,7 @@
 #' # QQ-plot dos Resíduos
 #' grafico(modelo_exemplo, tipo = "qqplot")
 #'
-#' @import ggplot2
+#' @import ggplot aes theme_classic tidyeval labs geom_point geom_hline geom_qq geom_qq_line
 #' @export
 
 grafico <- function(modelo, tipo = c('pvo', 'rvp', 'qqplot')) {
