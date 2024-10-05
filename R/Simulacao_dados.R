@@ -1,3 +1,5 @@
+set.seed(42)
+
 # Gerando os dados conforme especificado
 ram_qty = sample(c(4,6,8,12,16),1000, replace = TRUE)
 cpu_benchmark = rnorm(1000, 18, 4)
@@ -8,12 +10,11 @@ boot_speed = 40 - gpu_benchmark*0.4 - cpu_benchmark*0.8-ram_qty*0.5 + rnorm(1000
 
 # Criando o data frame
 rl_dataset <- data.frame(
-  "price ($)" = price, 
-  "boot_speed (s)" = boot_speed, 
-  gpu_benchmark, 
-  cpu_benchmark, 
+  "price ($)" = price,
+  "boot_speed (s)" = boot_speed,
+  gpu_benchmark,
+  cpu_benchmark,
   ram_qty)
-)
 
 # Adicionando os dados ao pacote
 usethis::use_data(rl_dataset, overwrite = TRUE)
