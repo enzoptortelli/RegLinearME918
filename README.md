@@ -4,7 +4,7 @@ Este pacote foi desenvolvido por Enzo Putton Tortelli de Souza, Eric Pavarim Lim
 
 Com este pacote, fornecemos ferramentas simples para ajustes de modelos de regressão linear simples, múltipla e multivariada, realização de predições a partir desses modelos e construção de gráficos de diagnósticos. O pacote também fornece um conjunto de dados, chamado `rl_dataset`, que pode ser usado para ilustrar o uso das funções.
 
-# Regressão Linear
+## Regressão Linear
 Apesar de não sermos videntes e não conseguirmos prever o futuro, fazer predições é importante para entendermos comportamentos do ambiente ao nosso redor. A regressão linear simples nos possibilita, a partir de uma variável preditora, prever algum evento resposta de nosso interesse. Um exemplo poderia ser prever o preço de computadores a partir da quantidade (em gigabytes) de memória RAM disponível.
 
 A ideia pode ser extendida quando quisermos prever esse custo levando em conta não somente a quantidade de memória RAM, mas também a performance das placas de vídeo (GPU) responsáveis por processarem as imagens nos computadores. Nessa situação, saímos de um modelo linear simples para um com múltiplos preditores (regressão múltipla). Uma outra possibilidade seria não apenas prever o custo dos computadores, mas também o tempo de inicialização dos mesmos, a partir de um conjunto de variáveis preditoras como as performances das placas de vídeo (GPU), dos processadores (CPU) e a quantidade de memória RAM. Estamos diante, portanto, de uma regressão multivariada.
@@ -25,28 +25,29 @@ devtools::install_github("enzoptortelli/RegLinearME918")
 
 Quando você carregar o pacote `RegLinearME918`, o pacote `ggplot2` será instalado automaticamente.
 
-
 ## Exemplo de Uso
-Aqui está um exemplo simples de como usar o pacote utilizando o conjunto de dados rl_dataset para ajustar um modelo de regressão linear e fazer predições:
-```r
+
+Aqui está um exemplo simples de como usar o pacote `RegLinearME918` utilizando o conjunto de dados `rl_dataset` para ajustar um modelo de regressão linear e fazer predições:
+```{r}
 # Carregando o pacote
-library(pacote_regressao_linear)
+library(RegLinearME918)
 
 # Carregando os dados do pacote
-data(meu_dataset)
+data(rl_dataset)
 
 # Ajustando o modelo de regressão linear
-modelo_exemplo <- reg_linear(meu_dataset[, 3:6], meu_dataset[, 1:2])
+modelo_exemplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 
 # Exibindo os coeficientes do modelo
 modelo_exemplo$coeficientes
 
 # Fazendo predições com novos valores de preditores
-novos_preditores <- matrix(c(1, 5, 2, 6, 3, 7, 4, 9), nrow = 2, byrow = TRUE)
+novos_preditores <- matrix(c(21.731307, 21.645257, 3, 
+                             22.697230, 20.559285, 4), nrow = 2, byrow = TRUE)
 predicoes <- predicao(modelo_exemplo, novos_preditores)
 predicoes$preditos
-
 ```
+
 ## Gráficos Disponíveis
 A função grafico() permite criar três tipos de gráficos para verificar o desempenho do modelo de regressão ajustado. Esses gráficos são úteis para avaliar a qualidade do ajuste e a adequação dos resíduos:
 
