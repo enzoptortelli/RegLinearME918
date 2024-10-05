@@ -1,6 +1,6 @@
-#' RegLinearME918: Um Pacote para Regressão Linear Simples e Múltipla
+#' RegLinearME918: Um Pacote para Regressão Linear
 #'
-#' O pacote RegLinearME918 oferece ferramentas para ajustar modelos de regressão linear simples e múltipla, fazer predições com base nos modelos ajustados e gerar gráficos que ajudam a visualizar e analisar os resultados.
+#' O pacote RegLinearME918 oferece ferramentas para ajustar modelos de regressão linear (simples e multivariada), fazer predições com base nos modelos ajustados e gerar gráficos que ajudam a visualizar e analisar os resultados.
 #'
 #' @section Funções principais:
 #' \itemize{
