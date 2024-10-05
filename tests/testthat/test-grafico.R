@@ -1,8 +1,20 @@
-mod_linear <- reg_linear(iris[, c(1, 3)], iris[, c(2, 4)])
-grafico_resultado <- grafico(mod_linear)
+set.seed(1234567)
 
-test_that("retorna os gráficos esperados", {
-  expect_length(grafico_resultado$pvo, 2)
-  expect_length(grafico_resultado$rvp, 4)
-  expect_length(graf_resultado$qqplot, 2)
+c1 <- rnorm(100)
+c2 <- rnorm(100)
+c3 <- 5*c1 - 4*c2 + rnorm(100)
+c4 <- -c1 + 2*c2 + rnorm(100)
+
+modelo <- reg_linear(x = cbind(c1, c2), y = cbind(c3, c4))
+graficos <- grafico(modelo)
+
+test_that("Retorna uma lista", {
+  expect_type(graficos, "list")
 })
+
+test_that("Retorna os gráficos esperados", {
+  expect_length(graficos$pvo, 2)
+  expect_length(graficos$rvp, 4)
+  expect_length(graficos$qqplot, 2)
+})
+
