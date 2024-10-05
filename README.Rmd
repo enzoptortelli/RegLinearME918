@@ -56,15 +56,20 @@ modelo_exemplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 # Exibindo os coeficientes do modelo
 modelo_exemplo$coeficientes
 
-# Fazendo predições com novos valores de preditores
-novos_preditores <- matrix(c(21.731307, 21.645257, 3, 
-                             22.697230, 20.559285, 4), nrow = 2, byrow = TRUE)
-predicoes <- predicao(modelo_exemplo, novos_preditores)
-predicoes$preditos
+# Fazendo predições com novos valores de preditores (valores contidos no banco de dados)
+novos_preditores <- rl_dataset[1:5, 3:5]
+resultado_predicao <- predicao(modelo_exemplo, novos_preditores, tipo = 'confianca')
+resultado_predicao
+
+# Fazendo predições com novos valores de preditores (valores que não estão contidos no banco de dados, porém estão dentro da amplitude dos dados)
+novos_preditores <- matrix(c(21.731307, 21.645257, 5, 
+                             22.697230, 20.559285, 7), nrow = 2, byrow = TRUE)
+resultado_predicao <- predicao(modelo_exemplo, novos_preditores, tipo = 'predicao')
+resultado_predicao
 ```
 
 ## Gráficos Disponíveis
-A função grafico() permite criar três tipos de gráficos para verificar o desempenho do modelo de regressão ajustado. Esses gráficos são úteis para avaliar a qualidade do ajuste e a adequação dos resíduos:
+A função `grafico()` permite criar três tipos de gráficos para verificar o desempenho do modelo de regressão ajustado. Esses gráficos são úteis para avaliar a qualidade do ajuste e a adequação dos resíduos:
 
 ### Tipos de Gráficos
 - Valores Preditos vs Observados (pvo): Compara os valores preditos pelo modelo com os valores observados no conjunto de dados. Este gráfico ajuda a verificar se o modelo está ajustando corretamente os dados.
