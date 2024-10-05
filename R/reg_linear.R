@@ -38,15 +38,23 @@
 reg_linear <- function(x, y){
   x <- as.matrix(x)
   y <- as.matrix(y)
+
   # filtrar matriz data.frame ou vetor
-  if (!is.numeric(x) || !is.numeric(y)) {
-    stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ser variáveis contínuas")
+  if(!is.numeric(x) || !is.numeric(y)) {
+    stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ser variáveis contínuas.")
   }
 
   # Verificar se x e y possuem o mesmo tamanho no banco de dados:
-  if (!all(sapply(x, length) != length(y))) {
-    stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ter o mesmo número de observações")
+  if(!all(sapply(x, length) != length(y))) {
+    stop("Erro: a variável preditora (x) e a variável resposta (y) precisam ter o mesmo número de observações.")
   }
+
+  # Verifica se possui algum valor NA em alguns dos vetores
+  lapply(cbind(x, y), function(coluna) {
+    if(any(is.na(coluna))) {
+      stop("Erro: um dos dados inseridos possui valores NA.")
+    }
+  })
 
   # Criando a matriz X (matriz de delineamento ou matriz de regressão):
   mx <- cbind(1, x)
