@@ -4,9 +4,9 @@
 \name{RegLinearME918}
 \alias{RegLinearME918-package}
 \alias{RegLinearME918}
-\title{RegLinearME918: Um Pacote para Regressão Linear Simples e Múltipla}
+\title{RegLinearME918: Um Pacote para Regressão Linear}
 \description{
-O pacote RegLinearME918 oferece ferramentas para ajustar modelos de regressão linear simples e múltipla, fazer predições com base nos modelos ajustados e gerar gráficos que ajudam a visualizar e analisar os resultados.
+O pacote RegLinearME918 oferece ferramentas para ajustar modelos de regressão linear (simples e multivariada), fazer predições com base nos modelos ajustados e gerar gráficos que ajudam a visualizar e analisar os resultados.
 }
 \section{Funções principais}{
 
@@ -26,11 +26,10 @@ O pacote inclui um conjunto de dados simulado, \code{\link{rl_dataset}}, que pod
 \code{\link{reg_linear}}, \code{\link{predicao}}, \code{\link{grafico}}, \code{\link{rl_dataset}}
 }
 \author{
-\strong{Maintainer}: 
+\strong{Maintainer}: Luiz Felipe de Oliveira Barbosa Nunes \email{l255403@dac.unicamp.br}
 
 Authors:
 \itemize{
-  \item Luiz Felipe de Oliveira Barbosa Nunes \email{l255403@dac.unicamp.br}
   \item Enzo Putton Tortelli \email{e204256@dac.unicamp.br}
   \item Lara Maria Herrera Drugowick \email{l236181@dac.unicamp.br}
   \item Eric Pavarim Lima \email{e247471@dac.unicamp.br}
