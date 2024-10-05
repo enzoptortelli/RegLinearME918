@@ -10,8 +10,8 @@ boot_speed = 40 - gpu_benchmark*0.4 - cpu_benchmark*0.8-ram_qty*0.5 + rnorm(1000
 
 # Criando o data frame
 rl_dataset <- data.frame(
-  "price ($)" = price,
-  "boot_speed (s)" = boot_speed,
+  "price" = price,
+  "boot_speed" = boot_speed,
   gpu_benchmark,
   cpu_benchmark,
   ram_qty)
