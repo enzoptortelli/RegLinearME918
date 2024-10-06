@@ -28,3 +28,4 @@ test_that("Teste predicao()", {
 
   expect_equal(format(ceiling(predicao(modelo, valores)$predicao_1[[2]][[1]]*100)/100, nsmall = 2), 19.38)
 })
+
