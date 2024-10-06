@@ -24,23 +24,18 @@ reg_linear(x, y)
 A função \code{reg_linear} deve ser usada para ajustar modelos de regressão linear, incluindo modelos multivariados.
 }
 \details{
-A função ajusta um modelo de regressão linear com base nos preditores e na variável resposta fornecidos. Ela utiliza a forma matricial da regressão linear para calcular os coeficientes de ajuste.
+A função ajusta um modelo de regressão linear com base nos preditores e nas variáveis respostas fornecidas. Ela utiliza a forma matricial da regressão linear para calcular os coeficientes de ajuste.
 }
 \examples{
 # Carregando o conjunto de dados do pacote
 data(rl_dataset)
 
 # Ajustando um modelo de regressão linear simples
-modelo_simples <- reg_linear(rl_dataset[, "Preditora.1"], rl_dataset[, "Resposta.1"])
+modelo_simples <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1])
 modelo_simples$coeficientes
 
 # Ajustando um modelo de regressão linear múltipla
-modelo_multiplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
-                              rl_dataset[, c("Resposta.1", "Resposta.2")])
+#' modelo_multiplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 modelo_multiplo$coeficientes
-
-# Ajustando um modelo com o dataset iris
-modelo_iris <- reg_linear(iris[, 1], iris[, 2])
-modelo_iris$coeficientes
 
 }
