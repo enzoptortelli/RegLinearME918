@@ -35,9 +35,11 @@ Os dados (fictícios) foram simulados pelos autores para fins ilustrativos do pa
 - `ram_qty`: Quantidade memória RAM no computador (em gigabytes).
 
 ```{r}
+data(rl_dataset)
 head(rl_dataset)
 ```
 Os detalhes das simulações dos dados podem ser acessados com o arquivo `Simulacao_dados.R`.
+
 ## Exemplo de Uso
 
 Aqui está um exemplo simples de como usar o pacote `RegLinearME918` utilizando o conjunto de dados `rl_dataset` para ajustar um modelo de regressão linear e fazer predições:
