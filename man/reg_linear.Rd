@@ -35,7 +35,7 @@ modelo_simples <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1])
 modelo_simples$coeficientes
 
 # Ajustando um modelo de regressão linear múltipla
-#' modelo_multiplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
+modelo_multiplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 modelo_multiplo$coeficientes
 
 }

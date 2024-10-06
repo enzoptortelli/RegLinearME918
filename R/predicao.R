@@ -15,13 +15,12 @@
 #' data(rl_dataset)
 #'
 #' # Ajustando o modelo de regressão linear com o rl_dataset
-#' modelo_exemplo <- reg_linear(rl_dataset[, 1:3],
-#'                              rl_dataset[, 4:5])
+#' modelo_exemplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 #'
 #' # Fazendo predições com novos valores de preditores
-#' novos_preditores <- rl_dataset[1:5, 1:3]
+#' novos_preditores <- rl_dataset[1:3, 3:5]
 #' resultado_predicao <- predicao(modelo_exemplo, novos_preditores, tipo = 'confianca')
-#' resultado_predicao$preditos
+#' resultado_predicao
 #'
 #' @export
 
