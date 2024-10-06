@@ -15,18 +15,10 @@
 #' data(rl_dataset)
 #'
 #' # Ajustando o modelo de regressão linear com o rl_dataset
-#' modelo_exemplo <- reg_linear(rl_dataset[, c("Preditora.1", "Preditora.2", "Preditora.3", "Preditora.4")],
-#'                              rl_dataset[, c("Resposta.1", "Resposta.2")])
+#' modelo_exemplo <- reg_linear(rl_dataset[, 3:5], rl_dataset[, 1:2])
 #'
 #' # Gerando gráficos de verificação do modelo ajustado
-#' # Gráfico de Valores Preditos x Observados
-#' grafico(modelo_exemplo, tipo = "pvo")
-#'
-#' # Gráfico de Resíduos x Preditoras
-#' grafico(modelo_exemplo, tipo = "rvp")
-#'
-#' # QQ-plot dos Resíduos
-#' grafico(modelo_exemplo, tipo = "qqplot")
+#' grafico(modelo_exemplo)
 #'
 #' @importFrom ggplot2 ggplot aes theme_classic labs geom_point geom_hline geom_qq geom_qq_line
 #' @export
