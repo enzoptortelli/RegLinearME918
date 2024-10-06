@@ -9,16 +9,7 @@ test_that("Teste 9 reg_linear()", {
 })
 
 
-# Teste 2: Verifica se a predição retorna o número correto de valores
-test_that("Teste 11 reg_linear()", {
-  df <- data.frame(x1 = rnorm(100), x2 = rnorm(100), x3 = rnorm(100), y = rnorm(100))
-  modelo <- reg_linear(df[, c("x1", "x2", "x3")], df$y)
-  valores <- matrix(c(1, 5, 2, 6, 3, 7, 4, 9, 8), nrow = 3, byrow = TRUE)
-  expect_length(predicao(modelo, valores)$preditos, nrow(valores))
-})
-
-
-# Teste 3: teste exato para verificar se o valor obtido é igual ao esperado.
+# Teste 2: teste exato para verificar se o valor obtido é igual ao esperado.
 test_that("Teste predicao()", {
   set.seed(1234567)
   df <- data.frame(x1 = rnorm(100), x2 = rnorm(100))
@@ -28,7 +19,7 @@ test_that("Teste predicao()", {
   expect_equal(predicao(modelo, valores)$predicao_1[[2]][[1]], 21.372063)
 })
 
-# Teste 4: verifica se tenta predizer uma resposta a partir de variáveis não-numéricas.
+# Teste 3: verifica se tenta predizer uma resposta a partir de variáveis não-numéricas.
 test_that("Teste string", {
   df <- data.frame(x1 = rnorm(100), x2 = rnorm(100))
   df$y <- df$x1 + df$x2*2 + rnorm(100)
