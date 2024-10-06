@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(ME918SA2024S2trabalho2)
+library(RegLinearME918)
 
-test_check("ME918SA2024S2trabalho2")
+test_check("RegLinearME918")
