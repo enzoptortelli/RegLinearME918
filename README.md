@@ -35,9 +35,18 @@ Os dados (fictícios) foram simulados pelos autores para fins ilustrativos do pa
 - `ram_qty`: Quantidade memória RAM no computador (em gigabytes).
 
 ```{r}
-data(rl_dataset)
 head(rl_dataset)
 ```
+ 
+    price     boot_speed   gpu_benchmark  cpu_benchmark   ram_qty
+
+1	 3550.582	  12.245451    22.76719	      20.50221	        4
+2	 4763.954	  3.875928	   28.69565	      20.93299	        16
+3  2067.386	  20.728836	   10.34451	      15.67214 	        4
+4	 2838.416	  14.820797	   14.92418	      21.93358	        4
+5	 2396.347	  17.676335	   10.61037	      19.71397	        6
+6	 3452.274	  11.426451	   18.13448	      19.79971	        12
+
 Os detalhes das simulações dos dados podem ser acessados com o arquivo `Simulacao_dados.R`.
 
 ## Exemplo de Uso
