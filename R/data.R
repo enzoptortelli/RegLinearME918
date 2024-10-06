@@ -7,7 +7,7 @@
 #' \describe{
 #'  \item{price}{Preço do computador (em dólares americanos);}
 #'  \item{boot_speed}{Tempo para que o computador inicialize o sistema operacional (em segundos);}
-#'  \item{gpu_benchmark}{Pontução do computador no benchmark PavarimMark3D™;}
+#'  \item{gpu_benchmark}{Pontuação do computador no benchmark PavarimMark3D™;}
 #'  \item{cpu_benchmark}{Pontuação do computador no benchmark PavarimMark™ }
 #'  \item{ram_qty}{Quantidade memória RAM no computador (em GB).}
 #' }

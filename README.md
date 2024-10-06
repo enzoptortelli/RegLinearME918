@@ -25,6 +25,19 @@ devtools::install_github("enzoptortelli/RegLinearME918")
 
 Quando você carregar o pacote `RegLinearME918`, o pacote `ggplot2` será instalado automaticamente.
 
+## Sobre os dados disponíveis
+
+Os dados (fictícios) foram simulados pelos autores para fins ilustrativos do pacote RegLinearME918. Trata-se de uma dataframe com 1000 observações e 5 variáveis: 
+- `preço de computadores` (em dólares americanos);
+- `tempo para que o computador inicialize o sistema operacional` (em segundos);
+- `gpu_benchmark`: Pontuação do computador no benchmark PavarimMark3D™
+- `cpu_benchmark`: Pontuação do computador no benchmark PavarimMark™
+- `ram_qty`: Quantidade memória RAM no computador (em gigabytes).
+
+```{r}
+head(rl_dataset)
+```
+Os detalhes das simulações dos dados podem ser acessados com o arquivo `Simulacao_dados.R`.
 ## Exemplo de Uso
 
 Aqui está um exemplo simples de como usar o pacote `RegLinearME918` utilizando o conjunto de dados `rl_dataset` para ajustar um modelo de regressão linear e fazer predições:
